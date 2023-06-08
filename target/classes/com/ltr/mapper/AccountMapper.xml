@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ltr.mapper.AccountMapper">
+
+    <!-- 查询一个网站的所有账号（包括条件查询） -->
+    <select id="getAccount" resultType="com.ltr.pojo.Account">
+        select aid,web_account,web_password from accounts where wid = #{wid}
+        <if test="webAccount != null and webAccount != ''"> and web_account = #{webAccount}</if>
+    </select>
+
+    <!-- 按aid查询账号 -->
+    <select id="getAccountByAid" resultType="com.ltr.pojo.Account">
+        select aid,web_account,web_password from accounts where aid = #{aid}
+    </select>
+
+    <!-- 添加账号 -->
+    <insert id="addAccount" parameterType="com.ltr.pojo.Account">
+        insert into accounts(uid, wid, web_account, web_password) VALUES (#{uid}, #{wid}, #{webAccount}, #{webPassword})
+    </insert>
+
+    <!-- 按aid删除账号 -->
+    <delete id="deleteAccountByAid">
+        delete from accounts where aid = #{aid}
+    </delete>
+
+    <!-- 按wid删除账号 -->
+    <delete id="deleteAccountByWid">
+        delete from accounts where wid = #{wid}
+    </delete>
+
+    <!-- 按uid删除账号 -->
+    <delete id="deleteAccountByUid">
+        delete from accounts where uid = #{uid}
+    </delete>
+
+    <!-- 修改账号 -->
+    <update id="modifyAccount" parameterType="com.ltr.pojo.Account">
+        update accounts set web_password = #{webPassword}, web_account = #{webAccount} where aid = #{aid}
+    </update>
+
+</mapper>

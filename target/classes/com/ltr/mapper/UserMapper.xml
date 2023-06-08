@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ltr.mapper.UserMapper">
+
+    <!-- 添加用户 -->
+    <insert id="addUser" parameterType="com.ltr.pojo.User">
+        insert into users(username, phone, password, identity, des_key) VALUES (#{username}, #{phone}, #{password}, #{identity}, #{desKey})
+    </insert>
+
+    <!-- 修改用户 -->
+    <update id="modifyUser" parameterType="com.ltr.pojo.User">
+        update users set username = #{username}, phone = #{phone}, password = #{password}, identity = #{identity} where uid = #{uid}
+    </update>
+
+    <!-- 修改密码 -->
+    <update id="modifyPassword">
+        update users set password = #{newPassword} where uid = #{uid} and password = #{oldPassword}
+    </update>
+
+    <!-- 删除用户 -->
+    <delete id="deleteUser">
+        delete from users where uid = #{uid}
+    </delete>
+
+    <!-- 登录查询 -->
+    <select id="getUserByPhoneAndPassword" resultType="com.ltr.pojo.User">
+        select uid,username,phone,password,identity from users where phone = #{phone}
+    </select>
+
+    <!-- 查询所有用户（包括条件查询） -->
+    <select id="getUser" resultType="com.ltr.pojo.User">
+        select uid,username,phone,password,identity from users
+        <where>
+            <if test="uid != null" >uid = #{uid}</if>
+            <if test="username != null and username != ''" >and username like concat('%',#{username},'%')</if>
+        </where>
+    </select>
+
+    <!-- 按uid查询用户 -->
+    <select id="getUserByUid" resultType="com.ltr.pojo.User">
+        select uid,username,phone,password,identity from users where uid = #{uid}
+    </select>
+
+    <!-- 查询密钥是否存在 -->
+    <select id="checkDesKey" resultType="java.lang.Integer">
+        select count(des_key) from users where des_key = #{desKey}
+    </select>
+
+</mapper>
