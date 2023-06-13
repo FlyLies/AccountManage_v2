@@ -1,0 +1,30 @@
+#------数据库配置------
+spring:
+  datasource:
+    #驱动类名称
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #数据库连接url
+    url: jdbc:mysql://localhost:3306/account_manage_v2?serverTimezone=UTC&useSSL=false
+    #数据库连接用户名
+    username: root
+    #数据库连接密码
+    password: 111111
+
+#------Mybatis配置------
+mybatis:
+  configuration:
+    #配置mybatis日志，指定输出到控制台
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #开启mybatis驼峰命名自动映射开关a_column----->aColumn
+    map-underscore-to-camel-case: true
+
+#------分页插件配置------
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+#Spring事务管理日志开关
+logging:
+  level: debug
