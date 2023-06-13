@@ -37,5 +37,6 @@ pagehelper:
   params: count=countSql
 
 #Spring事务管理日志开关
+# logging.level.org.springframeword.jdbc.support.JdbcTransactionManager=debug
 logging:
   level: debug
