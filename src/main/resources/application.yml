@@ -1,28 +1,39 @@
 #------数据库配置------
 spring:
   datasource:
-    #驱动类名称
+    # 驱动类名称
     driver-class-name: com.mysql.cj.jdbc.Driver
-    #数据库连接url
+    # 数据库连接url
     url: jdbc:mysql://localhost:3306/account_manage_v2?serverTimezone=UTC&useSSL=false
-    #数据库连接用户名
+    # 数据库连接用户名
     username: root
-    #数据库连接密码
+    # 数据库连接密码
     password: 111111
 
 #------Mybatis配置------
 mybatis:
   configuration:
-    #配置mybatis日志，指定输出到控制台
+    # 配置mybatis日志，指定输出到控制台
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-    #开启mybatis驼峰命名自动映射开关a_column----->aColumn
+    # 开启mybatis驼峰命名自动映射开关a_column----->aColumn
     map-underscore-to-camel-case: true
 
 #------分页插件配置------
 pagehelper:
+  # 配置数据库方言属性
   helper-dialect: mysql
+  # 分页参数合理化
+  # 默认是false。
+  # 启用合理化时，如果pageNum<1会查询第一页，如果pageNum>pages会查询最后一页；
+  # 禁用合理化时，如果pageNum<1或pageNum>pages会返回空数据
   reasonable: true
+  # 支持通过 Mapper 接口参数来传递分页参数
+  # 默认值 false
   support-methods-arguments: true
+  # 为了支持startPage(Object params)方法，增加了该参数来配置参数映射，
+  # 用于从对象中根据属性名取值
+  # 可以配置pageNum,pageSize,count,pageSizeZero,reasonable，不配置映射的用默认值
+  # 默认值为pageNum=pageNum;pageSize=pageSize;count=countSql;reasonable=reasonable;pageSizeZero=pageSizeZero
   params: count=countSql
 
 #Spring事务管理日志开关
