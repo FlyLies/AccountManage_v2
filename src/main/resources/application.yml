@@ -4,7 +4,7 @@ spring:
     # 驱动类名称
     driver-class-name: com.mysql.cj.jdbc.Driver
     # 数据库连接url
-    url: jdbc:mysql://localhost:3306/account_manage_v2?serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://localhost:3306/account_manage_v2?serverTimezone=UTC&useUnicode=true&useSSL=false
     # 数据库连接用户名
     username: root
     # 数据库连接密码
