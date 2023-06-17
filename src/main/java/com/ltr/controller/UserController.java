@@ -1,6 +1,5 @@
 package com.ltr.controller;
 
-import com.ltr.pojo.PageBean;
 import com.ltr.pojo.Result;
 import com.ltr.pojo.User;
 import com.ltr.service.UserService;
