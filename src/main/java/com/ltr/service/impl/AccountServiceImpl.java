@@ -38,7 +38,7 @@ public class AccountServiceImpl implements AccountService {
             account.decryptAccount(key);
         } catch (Exception e) {
             e.printStackTrace();
-            log.info("解密失败");
+            log.warn("解密失败");
         }
         return accountMapper.getAccountByAid(aid);
     }
@@ -50,7 +50,7 @@ public class AccountServiceImpl implements AccountService {
             account.encryptAccount(key);
         } catch (Exception e) {
             e.printStackTrace();
-            log.info("加密失败");
+            log.warn("加密失败");
         }
         return accountMapper.addAccount(account) > 0;
     }
