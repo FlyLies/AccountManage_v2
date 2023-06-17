@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
 
     /* 添加用户 */
     @Override
-    public int addUser(User user) {
+    public boolean addUser(User user) {
         // 生成密钥
         String desKey;
         do {
@@ -60,31 +60,26 @@ public class UserServiceImpl implements UserService {
             }
         }while (userMapper.checkDesKey(desKey) > 0);
         user.setDesKey(desKey);
-        return userMapper.addUser(user);
+        return userMapper.addUser(user) > 0;
     }
 
     /* 删除用户 */
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public int deleteUser(Integer uid) {
-        if(userMapper.deleteUser(uid) > 0 && webMapper.deleteWebByUid(uid) > 0 && accountMapper.deleteAccountByUid(uid) > 0) {
-            return userMapper.deleteUser(uid) + webMapper.deleteWebByUid(uid) + accountMapper.deleteAccountByUid(uid);
-        }
-        else {
-            return 0;
-        }
+    public boolean deleteUser(Integer uid) {
+        return userMapper.deleteUser(uid) > 0 && webMapper.deleteWebByUid(uid) > 0 && accountMapper.deleteAccountByUid(uid) > 0;
     }
 
     /* 修改用户 */
     @Override
-    public int modifyUser(User user) {
-        return userMapper.modifyUser(user);
+    public boolean modifyUser(User user) {
+        return userMapper.modifyUser(user) > 0;
     }
 
     /* 修改密码 */
     @Override
-    public int modifyPassword(Integer uid, String newPassword, String oldPassword) {
-        return userMapper.modifyPassword(uid, newPassword, oldPassword);
+    public boolean modifyPassword(Integer uid, String newPassword, String oldPassword) {
+        return userMapper.modifyPassword(uid, newPassword, oldPassword) > 0;
     }
 
 }

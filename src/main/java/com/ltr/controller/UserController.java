@@ -33,7 +33,7 @@ public class UserController {
     @PostMapping("/user")
     public Result addUser(@RequestBody User user) {
         log.info("用户注册：{}", user);
-        if(userService.addUser(user) > 0) {
+        if(userService.addUser(user)) {
             return Result.success();
         }
         else {
@@ -45,7 +45,7 @@ public class UserController {
     @DeleteMapping("/user/{uid}")
     public Result deleteUser(@PathVariable Integer uid) {
         log.info("用户注销：{}", uid);
-        if(userService.deleteUser(uid) > 0) {
+        if(userService.deleteUser(uid)) {
             return Result.success();
         }
         else {
@@ -57,7 +57,7 @@ public class UserController {
     @PutMapping("/user")
     public Result modifyUser(@RequestBody User user) {
         log.info("修改用户：{}", user);
-        if(userService.modifyUser(user) > 0) {
+        if(userService.modifyUser(user)) {
             return Result.success();
         }
         else {
@@ -69,7 +69,7 @@ public class UserController {
     @PutMapping("/user/{uid}")
     public Result modifyPassword(@PathVariable Integer uid, String newPassword, String oldPassword) {
         log.info("修改密码：{},{},{}", uid, newPassword, oldPassword);
-        if(userService.modifyPassword(uid, newPassword, oldPassword) > 0) {
+        if(userService.modifyPassword(uid, newPassword, oldPassword)) {
             return Result.success();
         }
         else {

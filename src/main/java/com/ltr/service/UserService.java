@@ -17,15 +17,15 @@ public interface UserService {
     User getUserByUid(Integer uid);
 
     /* 添加用户 */
-    int addUser(User user);
+    boolean addUser(User user);
 
     /* 删除用户 */
-    int deleteUser(Integer uid);
+    boolean deleteUser(Integer uid);
 
     /* 修改用户 */
-    int modifyUser(User user);
+    boolean modifyUser(User user);
 
     /* 修改密码 */
-    int modifyPassword(Integer uid, String newPassword, String oldPassword);
+    boolean modifyPassword(Integer uid, String newPassword, String oldPassword);
 
 }
