@@ -16,8 +16,11 @@ public class Account {
     private Integer aid;
     private Integer uid;
     private Integer wid;
-    private String webAccount;
+    private String webAccountP1;
+    private String webAccountP2;
+    private String webAccountP3;
     private String webPassword;
+    private String notes;
 
     /*加密方法*/
     public void encryptAccount(String key) throws Exception {
@@ -37,11 +40,15 @@ public class Account {
         /*第二个参数：表示秘钥规则*/
         cipher.init(Cipher.ENCRYPT_MODE, sks);
         /*进行加密*/
-        byte[] accountBytes = cipher.doFinal(this.webAccount.getBytes());
+        byte[] accountBytes1 = cipher.doFinal(this.webAccountP1.getBytes());
+        byte[] accountBytes2 = cipher.doFinal(this.webAccountP2.getBytes());
+        byte[] accountBytes3 = cipher.doFinal(this.webAccountP3.getBytes());
         byte[] passwordBytes = cipher.doFinal(this.webPassword.getBytes());
         /*编码*/
         Base64.Encoder encoder = Base64.getEncoder();
-        this.webAccount = encoder.encodeToString(accountBytes);
+        this.webAccountP1 = encoder.encodeToString(accountBytes1);
+        this.webAccountP2 = encoder.encodeToString(accountBytes2);
+        this.webAccountP3 = encoder.encodeToString(accountBytes3);
         this.webPassword = encoder.encodeToString(passwordBytes);
     }
 
@@ -57,9 +64,13 @@ public class Account {
         cipher.init(Cipher.DECRYPT_MODE, sks);
         Base64.Decoder decoder = Base64.getDecoder();
         /*解密*/
-        byte[] accountBytes = cipher.doFinal(decoder.decode(this.webAccount));
+        byte[] accountBytes1 = cipher.doFinal(decoder.decode(this.webAccountP1));
+        byte[] accountBytes2 = cipher.doFinal(decoder.decode(this.webAccountP2));
+        byte[] accountBytes3 = cipher.doFinal(decoder.decode(this.webAccountP3));
         byte[] passwordBytes = cipher.doFinal(decoder.decode(this.webPassword));
-        this.webAccount = new String(accountBytes, StandardCharsets.UTF_8);
+        this.webAccountP1 = new String(accountBytes1, StandardCharsets.UTF_8);
+        this.webAccountP2 = new String(accountBytes2, StandardCharsets.UTF_8);
+        this.webAccountP3 = new String(accountBytes3, StandardCharsets.UTF_8);
         this.webPassword = new String(passwordBytes, StandardCharsets.UTF_8);
     }
 
