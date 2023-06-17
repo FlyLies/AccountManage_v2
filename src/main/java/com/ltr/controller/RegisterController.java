@@ -19,8 +19,7 @@ public class RegisterController {
     @PostMapping("/register")
     public Result register(@RequestBody User user) {
         log.info("注册：{}", user);
-        int row = userService.addUser(user);
-        if(row > 0) {
+        if(userService.addUser(user)) {
             return Result.success();
         }
         else {
