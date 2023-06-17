@@ -39,4 +39,5 @@ pagehelper:
 #Spring事务管理日志开关
 # logging.level.org.springframeword.jdbc.support.JdbcTransactionManager=debug
 logging:
-  level: debug
+  level:
+    root: debug
