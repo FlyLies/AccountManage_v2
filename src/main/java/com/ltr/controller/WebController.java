@@ -45,7 +45,7 @@ public class WebController {
         log.info("添加网站：{}", web);
         Claims claims = JwtUtils.parseJwt(request.getHeader("token"));
         web.setUid((Integer) claims.get("uid"));
-        if(webService.addWeb(web) > 0) {
+        if(webService.addWeb(web)) {
             return Result.success();
         }
         else {
@@ -57,7 +57,7 @@ public class WebController {
     @DeleteMapping("/web/{wid}")
     public Result deleteWeb(@PathVariable Integer wid) {
         log.info("删除网站：{}", wid);
-        if(webService.deleteWeb(wid) > 0) {
+        if(webService.deleteWeb(wid)) {
             return Result.success();
         }
         else {
@@ -69,7 +69,7 @@ public class WebController {
     @PutMapping("/web")
     public Result modifyWeb(@RequestBody Web web) {
         log.info("修改网站：{}", web);
-        if(webService.modifyWeb(web) > 0) {
+        if(webService.modifyWeb(web)) {
             return Result.success();
         }
         else {

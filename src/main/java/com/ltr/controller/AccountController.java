@@ -61,7 +61,7 @@ public class AccountController {
         String jwt = request.getHeader("token");
         Claims claims = JwtUtils.parseJwt(jwt);
         User user = userService.getUserByUid((Integer) claims.get("uid"));
-        if(accountService.addAccount(account, user.getDesKey()) > 0) {
+        if(accountService.addAccount(account, user.getDesKey())) {
             return Result.success();
         }
         else {
@@ -73,7 +73,7 @@ public class AccountController {
     @DeleteMapping("/account/{aid}")
     public Result deleteAccountByAid(@PathVariable Integer aid) {
         log.info("按aid删除账号：{}", aid);
-        if(accountService.deleteAccountByAid(aid) > 0) {
+        if(accountService.deleteAccountByAid(aid)) {
             return Result.success();
         }
         else {
@@ -85,7 +85,7 @@ public class AccountController {
     @PutMapping("/account")
     public Result modifyAccount(@RequestBody Account account) {
         log.info("修改账号：{}", account);
-        if(accountService.modifyAccount(account) > 0) {
+        if(accountService.modifyAccount(account)) {
             return Result.success();
         }
         else {

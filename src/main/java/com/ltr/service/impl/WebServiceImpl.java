@@ -38,26 +38,21 @@ public class WebServiceImpl implements WebService {
 
     /* 添加网站 */
     @Override
-    public int addWeb(Web web) {
-        return webMapper.addWeb(web);
+    public boolean addWeb(Web web) {
+        return webMapper.addWeb(web) > 0;
     }
 
     /* 删除网站 */
     @Transactional(rollbackFor = Exception.class)  //事务出现任何异常都会回滚
     @Override
-    public int deleteWeb(Integer wid) {
-        if(webMapper.deleteWeb(wid) > 0 && accountMapper.deleteAccountByWid(wid) > 0) {
-            return webMapper.deleteWeb(wid) + accountMapper.deleteAccountByWid(wid);
-        }
-        else {
-            return 0;
-        }
+    public boolean deleteWeb(Integer wid) {
+        return webMapper.deleteWeb(wid) > 0 && accountMapper.deleteAccountByWid(wid) > 0;
     }
 
     /* 修改网站 */
     @Override
-    public int modifyWeb(Web web) {
-        return webMapper.modifyWeb(web);
+    public boolean modifyWeb(Web web) {
+        return webMapper.modifyWeb(web) > 0;
     }
 
 }

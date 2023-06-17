@@ -14,12 +14,12 @@ public interface AccountService {
     Account getAccountByAid(Integer aid, String key);
 
     /* 添加账号 */
-    int addAccount(Account account, String key);
+    boolean addAccount(Account account, String key);
 
     /* 按aid删除账号 */
-    int deleteAccountByAid(Integer aid);
+    boolean deleteAccountByAid(Integer aid);
 
     /* 修改账号 */
-    int modifyAccount(Account account);
+    boolean modifyAccount(Account account);
 
 }

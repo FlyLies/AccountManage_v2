@@ -12,12 +12,12 @@ public interface WebService {
     Web getWebByWid(Integer wid);
 
     /* 添加网站 */
-    int addWeb(Web web);
+    boolean addWeb(Web web);
 
     /* 删除网站 */
-    int deleteWeb(Integer wid);
+    boolean deleteWeb(Integer wid);
 
     /* 修改网站 */
-    int modifyWeb(Web web);
+    boolean modifyWeb(Web web);
 
 }

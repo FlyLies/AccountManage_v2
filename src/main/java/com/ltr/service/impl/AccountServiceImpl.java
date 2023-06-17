@@ -45,26 +45,26 @@ public class AccountServiceImpl implements AccountService {
 
     /* 添加账号 */
     @Override
-    public int addAccount(Account account, String key) {
+    public boolean addAccount(Account account, String key) {
         try {
             account.encryptAccount(key);
         } catch (Exception e) {
             e.printStackTrace();
             log.info("加密失败");
         }
-        return accountMapper.addAccount(account);
+        return accountMapper.addAccount(account) > 0;
     }
 
     /* 按aid删除账号 */
     @Override
-    public int deleteAccountByAid(Integer aid) {
-        return accountMapper.deleteAccountByAid(aid);
+    public boolean deleteAccountByAid(Integer aid) {
+        return accountMapper.deleteAccountByAid(aid) > 0;
     }
 
     /* 修改账号 */
     @Override
-    public int modifyAccount(Account account) {
-        return accountMapper.modifyAccount(account);
+    public boolean modifyAccount(Account account) {
+        return accountMapper.modifyAccount(account) > 0;
     }
 
 }
