@@ -6,18 +6,18 @@
 
     <!-- 查询一个网站的所有账号（包括条件查询） -->
     <select id="getAccount" resultType="com.ltr.pojo.Account">
-        select aid,web_account,web_password from accounts where wid = #{wid}
-        <if test="webAccount != null and webAccount != ''"> and web_account = #{webAccount}</if>
+        select aid,web_account_p1,web_account_p2,web_account_p3,web_password,notes from accounts where wid = #{wid}
+        <if test="webAccountP1 != null and webAccountP1 != ''"> and web_account_p1 = #{webAccountP1}</if>
     </select>
 
     <!-- 按aid查询账号 -->
     <select id="getAccountByAid" resultType="com.ltr.pojo.Account">
-        select aid,web_account,web_password from accounts where aid = #{aid}
+        select aid,web_account_p1,web_account_p2,web_account_p3,web_password from accounts where aid = #{aid}
     </select>
 
     <!-- 添加账号 -->
     <insert id="addAccount" parameterType="com.ltr.pojo.Account">
-        insert into accounts(uid, wid, web_account, web_password) VALUES (#{uid}, #{wid}, #{webAccount}, #{webPassword})
+        insert into accounts(wid,web_account_p1,web_account_p2,web_account_p3,web_password,notes) VALUES (#{wid},#{webAccountP1},#{webAccountP2},#{webAccountP3},#{webPassword},#{notes})
     </insert>
 
     <!-- 按aid删除账号 -->
@@ -32,12 +32,14 @@
 
     <!-- 按uid删除账号 -->
     <delete id="deleteAccountByUid">
-        delete from accounts where uid = #{uid}
+        delete from accounts where wid = (
+            select wid from webs where uid = #{uid}
+        )
     </delete>
 
     <!-- 修改账号 -->
     <update id="modifyAccount" parameterType="com.ltr.pojo.Account">
-        update accounts set web_password = #{webPassword}, web_account = #{webAccount} where aid = #{aid}
+        update accounts set web_account_p1 = #{webAccountP1}, web_account_p2 = #{webAccountP2}, web_account_p3 = #{webAccountP3}, web_password = #{webPassword} where aid = #{aid}
     </update>
 
 </mapper>
