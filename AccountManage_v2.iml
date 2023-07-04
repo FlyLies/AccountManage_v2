@@ -67,9 +67,8 @@
     <orderEntry type="library" scope="TEST" name="Maven: net.minidev:json-smart:2.4.10" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.minidev:accessors-smart:2.4.9" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.ow2.asm:asm:9.3" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.36" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.3" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: jakarta.activation:jakarta.activation-api:1.2.2" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.3" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.activation:jakarta.activation-api:1.2.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.assertj:assertj-core:3.22.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest:2.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter:5.8.2" level="project" />
@@ -95,6 +94,14 @@
     <orderEntry type="library" name="Maven: com.github.pagehelper:pagehelper-spring-boot-autoconfigure:1.4.6" level="project" />
     <orderEntry type="library" name="Maven: com.github.pagehelper:pagehelper:5.3.2" level="project" />
     <orderEntry type="library" name="Maven: com.github.jsqlparser:jsqlparser:4.5" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:druid-spring-boot-starter:1.2.18" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:druid:1.2.18" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.36" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.7.11" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.jaxb:jaxb-runtime:2.3.8" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.jaxb:txw2:2.3.8" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.istack:istack-commons-runtime:3.0.12" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.sun.activation:jakarta.activation:1.2.2" level="project" />
     <orderEntry type="library" name="Maven: io.jsonwebtoken:jjwt:0.9.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.13.5" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.13.5" level="project" />
@@ -106,6 +113,5 @@
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.11.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-devtools:2.7.11" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.7.11" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.7.11" level="project" />
   </component>
 </module>
